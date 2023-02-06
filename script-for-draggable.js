@@ -9,6 +9,7 @@ function onDragEnd(e) {
     e.target.remove();
 
     const newParentElem = document.createElement('div');
+    newParentElem.id = "parent-element"
     newParentElem.classList.add("parent-element");
     newParentElem.style.top = offsetY + "px";
     newParentElem.style.left = offsetX + "px";

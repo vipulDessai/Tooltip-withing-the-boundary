@@ -23,4 +23,5 @@
 }
 .root .child-element.show {
     display: block;
+    position: fixed;
 }
