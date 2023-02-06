@@ -1,27 +1,27 @@
 .root .boundary {
-    position: relative;
-    margin: 20px;
-    width: 500px;
-    height: 500px;
-    border: 1px solid rgb(72, 152, 222);
+  position: relative;
+  margin: 20px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgb(72, 152, 222);
 }
 
 .root .boundary .parent-element {
-    position: absolute;
-    width: 200px;
-    height: 50px;
-    border: 1px solid rgb(175, 204, 87);
-    top: 30px;
-    left: 40px;
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  border: 1px solid rgb(175, 204, 87);
+  top: 30px;
+  left: 40px;
 }
 
 .root .child-element {
-    width: 250px;
-    height: 250px;
-    border: 1px solid rgb(204, 87, 147);
-    display: none;
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgb(204, 87, 147);
+  display: none;
 }
 .root .child-element.show {
-    display: block;
-    position: fixed;
+  display: block;
+  position: fixed;
 }

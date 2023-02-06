@@ -1,0 +1,18 @@
+{
+  "name": "element-positioning-within-specified-boundaries-relative-to-parent-element",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script-for-child-positioning.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretty": "prettier --write ./* ./**/* --ignore-unknown",
+    "prettier:watch": "onchange \"./*\" \"./**/*\" -- prettier --write --ignore-unknown {{changed}}"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "onchange": "^7.1.0",
+    "prettier": "^2.8.3"
+  }
+}

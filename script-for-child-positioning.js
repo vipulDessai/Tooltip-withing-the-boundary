@@ -1,11 +1,34 @@
-document.addEventListener('click', function (e) {
-    if (e.target.id === "parent-element") {
-        const parentRect = e.target.getBoundingClientRect();
+const rootBoundaryElemRect = document
+  .querySelector(".root  .boundary")
+  .getBoundingClientRect();
 
-        const childElem = document.querySelector('#child-element');
+const childElementProperties = {
+  width: 250,
+  height: 250,
+};
 
-        childElem.style.top = parentRect.top + "px";
-        childElem.style.left = parentRect.left + "px";
-        childElem.classList.add('show');
+document.addEventListener("click", function (e) {
+  if (e.target.id === "parent-element") {
+    childElem.classList.add("show");
+
+    const parentRect = e.target.getBoundingClientRect();
+    const childElem = document.querySelector("#child-element");
+
+    let childLeftPosition = parentRect.left - childElementProperties.width;
+
+    let condition = true;
+    let letLeftSideOkayForChild = false;
+    while (condition) {
+      break;
+
+      if (childLeftPosition > rootBoundaryElemRect.left) {
+      }
     }
-})
+
+    const computedChildTopPosition = parentRect.top + "px";
+    const computedChildLeftPosition = parentRect.left + "px";
+
+    childElem.style.top = computedChildTopPosition;
+    childElem.style.left = computedChildLeftPosition;
+  }
+});
