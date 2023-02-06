@@ -9,26 +9,37 @@ const childElementProperties = {
 
 document.addEventListener("click", function (e) {
   if (e.target.id === "parent-element") {
-    childElem.classList.add("show");
-
     const parentRect = e.target.getBoundingClientRect();
     const childElem = document.querySelector("#child-element");
+    childElem.classList.add("show");
 
-    let childLeftPosition = parentRect.left - childElementProperties.width;
-
-    let condition = true;
-    let letLeftSideOkayForChild = false;
-    while (condition) {
-      break;
-
-      if (childLeftPosition > rootBoundaryElemRect.left) {
-      }
+    if (
+      parentRect.left - childElementProperties.width >=
+      rootBoundaryElemRect.left
+    ) {
+      childElem.style.left =
+        parentRect.left - childElementProperties.width + "px";
+    } else {
+      childElem.style.left = parentRect.left + parentRect.width + "px";
     }
 
-    const computedChildTopPosition = parentRect.top + "px";
-    const computedChildLeftPosition = parentRect.left + "px";
+    const parentElemVerticalMidPoint = parentRect.top + parentRect.height / 2;
+    let highestChildTopPosition =
+      parentElemVerticalMidPoint - childElementProperties.height / 2;
+    while (
+      highestChildTopPosition <= parentElemVerticalMidPoint &&
+      highestChildTopPosition <= rootBoundaryElemRect.top
+    ) {
+      highestChildTopPosition += 10;
+    }
 
-    childElem.style.top = computedChildTopPosition;
-    childElem.style.left = computedChildLeftPosition;
+    while (
+      highestChildTopPosition + childElementProperties.height >
+      rootBoundaryElemRect.top + rootBoundaryElemRect.height
+    ) {
+      highestChildTopPosition -= 10;
+    }
+
+    childElem.style.top = highestChildTopPosition + "px";
   }
 });
