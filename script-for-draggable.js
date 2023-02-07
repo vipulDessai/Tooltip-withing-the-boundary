@@ -1,49 +1,32 @@
-function onDragEnd(e) {
-  return;
+let parentElemOffsetX;
+let parentElemOffsetY;
 
-  const rect = e.target.getBoundingClientRect();
+on_drag_end = function (ev) {
+  ev.target.remove();
 
-  const offsetX = e.clientX - rect.x;
-  const offsetY = e.clientY - rect.y;
-
-  e.target.remove();
+  const boundaryElment = document.querySelector("#boundary");
+  const boundaryElmentRect = boundaryElment.getBoundingClientRect();
 
   const newParentElem = document.createElement("div");
   newParentElem.id = "parent-element";
   newParentElem.classList.add("parent-element");
-  newParentElem.style.top = offsetY + "px";
-  newParentElem.style.left = offsetX + "px";
-  document.querySelector("#boundary").append(newParentElem);
+  newParentElem.style.top =
+    ev.clientY - boundaryElmentRect.top - parentElemOffsetY + "px";
+  newParentElem.style.left =
+    ev.clientX - boundaryElmentRect.left - parentElemOffsetX + "px";
+  boundaryElment.append(newParentElem);
   newParentElem.draggable = true;
-  newParentElem.ondragend = onDragEnd;
-}
-
-// TODO: fix the draggable code
-let offsetX;
-let offsetY;
-
-onDragStart = function (ev) {
-  const rect = ev.target.getBoundingClientRect();
-
-  offsetX = ev.clientX - rect.x;
-  offsetY = ev.clientY - rect.y;
+  newParentElem.ondragend = on_drag_end;
 };
 
-drop_handler = function (ev) {
-  ev.preventDefault();
+on_drag_start = function (ev) {
+  const rect = ev.target.getBoundingClientRect();
 
-  const left = parseInt(id2.style.left);
-  const top = parseInt(id2.style.top);
-
-  id1.style.position = "absolute";
-  id1.style.left = ev.clientX - left - offsetX + "px";
-  id1.style.top = ev.clientY - top - offsetY + "px";
-  id2.appendChild(document.getElementById("id1"));
+  parentElemOffsetX = ev.clientX - rect.x;
+  parentElemOffsetY = ev.clientY - rect.y;
 };
 
 dragover_handler = function (ev) {
-  return;
-
   ev.preventDefault();
   ev.dataTransfer.dropEffect = "move";
 };
