@@ -13,15 +13,22 @@ document.addEventListener("click", function (e) {
     const childElem = document.querySelector("#child-element");
     childElem.classList.add("show");
 
-    if (
-      parentRect.left - childElementProperties.width >=
-      rootBoundaryElemRect.left
-    ) {
-      childElem.style.left =
-        parentRect.left - childElementProperties.width + "px";
-    } else {
-      childElem.style.left = parentRect.left + parentRect.width + "px";
+    let suitableHorizontalPositionForChild =
+      parentRect.left - childElementProperties.width;
+    while (suitableHorizontalPositionForChild < rootBoundaryElemRect.left) {
+      suitableHorizontalPositionForChild += 10;
     }
+
+    let arrowForChildElement = "towards-left";
+    if (
+      suitableHorizontalPositionForChild + childElementProperties.width >
+      parentRect.left + parentRect.width / 2
+    ) {
+      suitableHorizontalPositionForChild = parentRect.left + parentRect.width;
+      arrowForChildElement = "towards-right";
+    }
+
+    childElem.style.left = suitableHorizontalPositionForChild + "px";
 
     const parentElemVerticalMidPoint = parentRect.top + parentRect.height / 2;
     let highestChildTopPosition =
@@ -41,5 +48,6 @@ document.addEventListener("click", function (e) {
     }
 
     childElem.style.top = highestChildTopPosition + "px";
+    childElem.classList.add(arrowForChildElement);
   }
 });
