@@ -10,7 +10,22 @@
 
   <body>
     <div class="root">
-      <video src=""></video>
+      <button onclick="playPause()">Play/Pause</button>
+      <button onclick="makeBig()">Big</button>
+      <button onclick="makeSmall()">Small</button>
+      <button onclick="makeNormal()">Normal</button>
+      <br /><br />
+      <video id="video1" width="420" controls>
+        <source
+          src="http://techslides.com/demos/sample-videos/small.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="http://techslides.com/demos/sample-videos/small.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML video.
+      </video>
     </div>
     <script src="script.js"></script>
   </body>
